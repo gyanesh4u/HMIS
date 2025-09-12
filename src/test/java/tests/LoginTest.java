@@ -1,6 +1,8 @@
 package tests;
 
+import org.openqa.selenium.Alert;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import base.BaseTest;
@@ -11,7 +13,7 @@ import io.qameta.allure.Step;
 public class LoginTest extends BaseTest {
 	@Step("login test..")
 	@Severity(SeverityLevel.BLOCKER)
-	@Test(priority = 3)
+	@Test(priority = 4)
 	public void loginTest() {
 		loginPage.doLogin(df.getproperty("username"), df.getproperty("password"));
 	}
@@ -26,5 +28,22 @@ public class LoginTest extends BaseTest {
 	@Test(priority = 2)
 	public void logoTest() {
 		Assert.assertTrue(loginPage.logoIsDisplayed());
+	}
+
+	@DataProvider
+	public Object[][] invalidLoginCredentials() {
+		return new Object[][] { 
+			{ "testselelettttt@gmail.com", "test@123" }, 
+			{ "march2024@open.com", "test@123" },
+			{ "march2024@@open.com", "test@@123" },
+			{ "", "test@123" }, 
+			{ "", "" } };
+
+	}
+	@Test(priority = 3,dataProvider = "invalidLoginCredentials")
+	public void invalidLoginTest(String invalidUsername,String invalidPassword) {
+		loginPage.doLogin(invalidUsername,invalidPassword);
+		//Alert alert=driver.switchTo().alert();
+		//alert.accept();
 	}
 }

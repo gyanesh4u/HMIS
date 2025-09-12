@@ -32,7 +32,7 @@ public class DriverFactory {
 
 		String browserName = prop.getProperty("browser");
 		// System.out.println("browser name : " + browserName);
-		Reporter.log("browser name : " + browserName);
+		Reporter.log("browser name : " + browserName, true);
 
 		highlightEle = prop.getProperty("highlight");
 

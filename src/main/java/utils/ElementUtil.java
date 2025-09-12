@@ -28,7 +28,7 @@ public class ElementUtil {
 	private Actions act;
 	private JavaScriptUtil jsUtil;
 
-	//private static final Logger log = LogManager.getLogger(ElementUtil.class);
+	// private static final Logger log = LogManager.getLogger(ElementUtil.class);
 
 	public ElementUtil(WebDriver driver) {
 		this.driver = driver;
@@ -37,10 +37,10 @@ public class ElementUtil {
 	}
 
 	public void doSendKeys(By locator, String value) {
-		//log.info("entering the value : " + value + " into locator: " + locator);
+		// log.info("entering the value : " + value + " into locator: " + locator);
 		if (value == null) {
-			//log.error("value : " + value + " is null...");
-			//throw new ElementException("===value can not be null====");
+			// log.error("value : " + value + " is null...");
+			// throw new ElementException("===value can not be null====");
 		}
 		WebElement ele = getElement(locator);
 		ele.clear();
@@ -52,7 +52,7 @@ public class ElementUtil {
 	}
 
 	public void doClick(By locator) {
-		//log.info("clicking on element using : " + locator);
+		// log.info("clicking on element using : " + locator);
 		getElement(locator).click();
 	}
 
@@ -64,7 +64,7 @@ public class ElementUtil {
 		try {
 			return getElement(locator).isDisplayed();
 		} catch (NoSuchElementException e) {
-			//throw new ElementException("===ELEMENT NOT FOUND===");
+			// throw new ElementException("===ELEMENT NOT FOUND===");
 		}
 		return false;
 	}
@@ -109,13 +109,14 @@ public class ElementUtil {
 		WebElement element = null;
 		try {
 			element = driver.findElement(locator);
-			//log.info("element is found using : " + locator);
+			// log.info("element is found using : " + locator);
 			if (Boolean.parseBoolean(DriverFactory.highlightEle)) {
 				jsUtil.flash(element);
 			}
 		} catch (Exception e) {
-		//	FrameworkException fe = new FrameworkException("invalid locator " + " : " + locator);
-			//log.info("Element not found using " + locator, fe);
+			// FrameworkException fe = new FrameworkException("invalid locator " + " : " +
+			// locator);
+			// log.info("Element not found using " + locator, fe);
 		}
 		return element;
 	}
@@ -346,7 +347,8 @@ public class ElementUtil {
 	 */
 	@Step("waiting for element :{0} visible within the timeout: {1}")
 	public WebElement waitForElementVisible(By locator, int timeout) {
-		//log.info("waiting for element using By locator: " + locator + " within time out: " + timeout);
+		// log.info("waiting for element using By locator: " + locator + " within time
+		// out: " + timeout);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
 		WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 		if (Boolean.parseBoolean(DriverFactory.highlightEle)) {
@@ -550,6 +552,15 @@ public class ElementUtil {
 				.withMessage("=====Alert NOT VISIBLE ON THE PAGE====");
 
 		return wait.until(ExpectedConditions.alertIsPresent());
+	}
+
+	public boolean isAlertPresent(WebDriver driver) {
+		try {
+			driver.switchTo().alert();
+			return true;
+		} catch (NoAlertPresentException e) {
+			return false;
+		}
 	}
 
 }

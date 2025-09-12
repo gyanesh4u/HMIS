@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Reporter;
 
 import io.qameta.allure.Step;
 import utils.ElementUtil;
@@ -32,10 +33,14 @@ public class LoginPage {
 	@Step("login with correct username: {0} and password: {1}")
 	public void doLogin(String appUsername, String appPassword) {
 		// log.info("application credentials: " + appUsername + " : " + "*********");
+		Reporter.log("applicaation credentials: " + appUsername + " : " + "********",true);
 		eleUtil.waitForElementVisible(userName, 10).sendKeys(appUsername);
 		eleUtil.doSendKeys(passWord, appPassword);
 		eleUtil.doClick(loginBtn);
 		// return new AccountsPage(driver);
+		if(eleUtil.isAlertPresent(driver)) {
+			eleUtil.acceptAlert(10);
+		}
 	}
 
 	@Step("logo test for login")
