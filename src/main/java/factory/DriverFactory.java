@@ -32,7 +32,7 @@ public class DriverFactory {
 
 		String browserName = prop.getProperty("browser");
 		// System.out.println("browser name : " + browserName);
-		Reporter.log("browser name : " + browserName, true);
+		Reporter.log("browser name : " + browserName+"...", true);
 
 		highlightEle = prop.getProperty("highlight");
 
@@ -98,6 +98,7 @@ public class DriverFactory {
 	}
 
 	public String getproperty(String key) {
+		Reporter.log("reading from property file "+key+"...",true);
 
 		return prop.getProperty(key);
 	}

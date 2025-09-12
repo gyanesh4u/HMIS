@@ -1,15 +1,16 @@
 package tests;
 
-import org.openqa.selenium.Alert;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import base.BaseTest;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Step;
-
+import listeners.TestAllureListener;
+@Listeners(TestAllureListener.class)
 public class LoginTest extends BaseTest {
 	@Step("login test..")
 	@Severity(SeverityLevel.BLOCKER)

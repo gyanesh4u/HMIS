@@ -7,6 +7,7 @@ import java.util.Properties;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
+import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -47,6 +48,7 @@ public class BaseTest {
 		if (!result.isSuccess()) {// only for failure test cases -- true
 			// Allure.attachment(DriverFactory.getScreenshotFile(), "image/png");
 			File src = df.getScreenshotFile();
+			Reporter.log("taken screenshot and saving to snap",true);
 			try {
 				FileUtils.copyFile(src, new File(System.getProperty("user.dir") + "/snap/" + System.currentTimeMillis()
 						+ result.getName() + ".png"));

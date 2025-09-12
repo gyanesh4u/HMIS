@@ -34,7 +34,8 @@ public class LoginPage {
 	public void doLogin(String appUsername, String appPassword) {
 		// log.info("application credentials: " + appUsername + " : " + "*********");
 		Reporter.log("applicaation credentials: " + appUsername + " : " + "********",true);
-		eleUtil.waitForElementVisible(userName, 10).sendKeys(appUsername);
+		//eleUtil.waitForElementVisible(userName, 10).sendKeys(appUsername);
+		eleUtil.doSendKeys(userName, appUsername);
 		eleUtil.doSendKeys(passWord, appPassword);
 		eleUtil.doClick(loginBtn);
 		// return new AccountsPage(driver);
