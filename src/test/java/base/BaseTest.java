@@ -18,6 +18,7 @@ import factory.DriverFactory;
 import io.qameta.allure.Description;
 import pages.DashBoardPage;
 import pages.LoginPage;
+import pages.RegisterationPage;
 
 public class BaseTest {
 	protected WebDriver driver;
@@ -26,6 +27,7 @@ public class BaseTest {
 
 	protected LoginPage loginPage;
 	protected DashBoardPage dashBoardPage;
+	protected RegisterationPage regPage;
 
 	@Description("launch the browser: {0} and url")
 	@Parameters({ "browser" })
