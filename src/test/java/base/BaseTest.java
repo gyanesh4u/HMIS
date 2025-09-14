@@ -16,6 +16,7 @@ import org.testng.annotations.Parameters;
 
 import factory.DriverFactory;
 import io.qameta.allure.Description;
+import pages.DashBoardPage;
 import pages.LoginPage;
 
 public class BaseTest {
@@ -24,6 +25,7 @@ public class BaseTest {
 	public DriverFactory df;
 
 	protected LoginPage loginPage;
+	protected DashBoardPage dashBoardPage;
 
 	@Description("launch the browser: {0} and url")
 	@Parameters({ "browser" })
@@ -39,6 +41,7 @@ public class BaseTest {
 		driver = df.initDriver(prop);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		loginPage = new LoginPage(driver);
+		dashBoardPage=new DashBoardPage(driver);
 		// commonsPage = new CommonsPage(driver);
 	}
 

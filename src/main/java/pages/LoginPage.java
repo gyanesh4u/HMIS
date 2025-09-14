@@ -29,7 +29,7 @@ public class LoginPage {
 	}
 
 	@Step("login with correct username: {0} and password: {1}")
-	public void doLogin(String appUsername, String appPassword) {
+	public DashBoardPage doLogin(String appUsername, String appPassword) {
 		Reporter.log("applicaation credentials: " + appUsername + " : " + "********", true);
 		// eleUtil.waitForElementVisible(userName, 10).sendKeys(appUsername);
 		eleUtil.doSendKeys(userName, appUsername);
@@ -38,6 +38,7 @@ public class LoginPage {
 		if (eleUtil.isAlertPresent(driver)) {
 			eleUtil.acceptAlert(10);
 		}
+		return new DashBoardPage(driver);
 	}
 
 	@Step("logo test for login")

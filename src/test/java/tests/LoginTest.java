@@ -38,13 +38,12 @@ public class LoginTest extends BaseTest {
 			{ "march2024@open.com", "test@123" },
 			{ "march2024@@open.com", "test@@123" },
 			{ "", "test@123" }, 
-			{ "", "" } };
+			{ "", "" } 
+			};
 
 	}
 	@Test(priority = 3,dataProvider = "invalidLoginCredentials")
 	public void invalidLoginTest(String invalidUsername,String invalidPassword) {
 		loginPage.doLogin(invalidUsername,invalidPassword);
-		//Alert alert=driver.switchTo().alert();
-		//alert.accept();
 	}
 }
