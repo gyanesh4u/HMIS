@@ -47,7 +47,7 @@ public class BaseTest {
 
 		if (!result.isSuccess()) {// only for failure test cases -- true
 			// Allure.attachment(DriverFactory.getScreenshotFile(), "image/png");
-			File src = df.getScreenshotFile();
+			File src = DriverFactory.getScreenshotFile();
 			Reporter.log("taken screenshot and saving to snap",true);
 			try {
 				FileUtils.copyFile(src, new File(System.getProperty("user.dir") + "/snap/" + System.currentTimeMillis()

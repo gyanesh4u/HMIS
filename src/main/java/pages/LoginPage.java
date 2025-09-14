@@ -25,21 +25,17 @@ public class LoginPage {
 	@Step("getting login page title....")
 	public String getLoginPageTitle() {
 		String title = driver.getTitle();
-		// System.out.println("login page title: "+ title);
-		// log.info("login page title: " + title);
 		return title;
 	}
 
 	@Step("login with correct username: {0} and password: {1}")
 	public void doLogin(String appUsername, String appPassword) {
-		// log.info("application credentials: " + appUsername + " : " + "*********");
-		Reporter.log("applicaation credentials: " + appUsername + " : " + "********",true);
-		//eleUtil.waitForElementVisible(userName, 10).sendKeys(appUsername);
+		Reporter.log("applicaation credentials: " + appUsername + " : " + "********", true);
+		// eleUtil.waitForElementVisible(userName, 10).sendKeys(appUsername);
 		eleUtil.doSendKeys(userName, appUsername);
 		eleUtil.doSendKeys(passWord, appPassword);
 		eleUtil.doClick(loginBtn);
-		// return new AccountsPage(driver);
-		if(eleUtil.isAlertPresent(driver)) {
+		if (eleUtil.isAlertPresent(driver)) {
 			eleUtil.acceptAlert(10);
 		}
 	}
