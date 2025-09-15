@@ -7,6 +7,7 @@ import java.util.NoSuchElementException;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchFrameException;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -28,8 +29,6 @@ public class ElementUtil {
 	private Actions act;
 	private JavaScriptUtil jsUtil;
 
-	// private static final Logger log = LogManager.getLogger(ElementUtil.class);
-
 	public ElementUtil(WebDriver driver) {
 		this.driver = driver;
 		act = new Actions(driver);
@@ -37,10 +36,7 @@ public class ElementUtil {
 	}
 
 	public void doSendKeys(By locator, String value) {
-		// log.info("entering the value : " + value + " into locator: " + locator);
 		if (value == null) {
-			// log.error("value : " + value + " is null...");
-			// throw new ElementException("===value can not be null====");
 		}
 		WebElement ele = getElement(locator);
 		ele.clear();
@@ -210,6 +206,14 @@ public class ElementUtil {
 	public void doSelectByValue(By locator, String value) {
 		Select select = new Select(getElement(locator));
 		select.selectByValue(value);
+	}
+
+	public void selectFromSelect2(By locator, String value) {
+		driver.findElement(locator).click();
+		WebElement searchBox = driver.findElement(locator);
+		//searchBox.clear();
+		searchBox.sendKeys(value);
+		searchBox.sendKeys(Keys.ENTER);
 	}
 
 	public int getDropDownOptionsCount(By locator) {

@@ -7,7 +7,6 @@ import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Step;
-import pages.LoginPage;
 
 public class LoginBase extends BaseTest {
 	//protected LoginPage loginPage;
@@ -18,7 +17,6 @@ public class LoginBase extends BaseTest {
 	@Owner("Gyanesh")
 	@BeforeClass
 	public void login() {
-		// loginPage = new LoginPage(driver);
 		dashBoardPage = loginPage.doLogin(df.getproperty("username"), df.getproperty("password"));
 	}
 }

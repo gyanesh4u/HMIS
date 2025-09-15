@@ -43,8 +43,8 @@ public class BaseTest {
 		driver = df.initDriver(prop);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		loginPage = new LoginPage(driver);
-		dashBoardPage=new DashBoardPage(driver);
-		// commonsPage = new CommonsPage(driver);
+		dashBoardPage = new DashBoardPage(driver);
+		regPage = new RegisterationPage(driver);
 	}
 
 	@AfterMethod // will be running after each @test method
@@ -53,7 +53,7 @@ public class BaseTest {
 		if (!result.isSuccess()) {// only for failure test cases -- true
 			// Allure.attachment(DriverFactory.getScreenshotFile(), "image/png");
 			File src = DriverFactory.getScreenshotFile();
-			Reporter.log("taken screenshot and saving to snap",true);
+			Reporter.log("taken screenshot and saving to snap", true);
 			try {
 				FileUtils.copyFile(src, new File(System.getProperty("user.dir") + "/snap/" + System.currentTimeMillis()
 						+ result.getName() + ".png"));
