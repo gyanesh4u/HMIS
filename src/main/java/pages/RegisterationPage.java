@@ -13,8 +13,7 @@ public class RegisterationPage {
 	private final By selectTitle = By.cssSelector("div[id='select2-drop'] input[type='text']");
 	private final By firstname = By.id("fName");
 	private final By lastname = By.id("lName");
-	private final By selectGender = By
-			.cssSelector("div[id='s2id_gender'] span[class='select2-chosen']");
+	private final By selectGender = By.cssSelector("div[id='s2id_gender'] span[class='select2-chosen']");
 	private final By selectGenderOption = By.cssSelector("div[id='select2-drop'] input[type='text']");
 	private final By mobileNumber = By.id("mobile");
 	private final By yrs = By.id("year");
@@ -38,6 +37,7 @@ public class RegisterationPage {
 			String month, String day, String department) {
 		eleUtil.waitForElementVisible(selectPrefix, 10);
 		eleUtil.doClick(selectPrefix);
+		eleUtil.waitForElementsVisible(selectTitle, 20);
 		eleUtil.selectFromSelect2(selectTitle, title);
 		eleUtil.waitForElementVisible(firstname, 10);
 		eleUtil.doSendKeys(firstname, fname);
