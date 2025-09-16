@@ -30,7 +30,7 @@ public class LoginPage {
 
 	@Step("login with correct username: {0} and password: {1}")
 	public DashBoardPage doLogin(String appUsername, String appPassword) {
-		Reporter.log("applicaation credentials: " + appUsername + " : " + "********", true);
+		Reporter.log("application credentials: " + appUsername + " : " + "********", true);
 		// eleUtil.waitForElementVisible(userName, 10).sendKeys(appUsername);
 		eleUtil.doSendKeys(userName, appUsername);
 		eleUtil.doSendKeys(passWord, appPassword);
