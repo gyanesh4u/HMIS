@@ -39,6 +39,7 @@ public class RegisterationPage {
 		eleUtil.waitForElementVisible(selectPrefix, 10);
 		eleUtil.doClick(selectPrefix);
 		eleUtil.selectFromSelect2(selectTitle, title);
+		eleUtil.waitForElementVisible(firstname, 10);
 		eleUtil.doSendKeys(firstname, fname);
 		eleUtil.doSendKeys(lastname, lname);
 		eleUtil.doClick(selectGender);

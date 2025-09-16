@@ -47,6 +47,12 @@
 			<artifactId>poi-ooxml</artifactId>
 			<version>5.4.1</version>
 		</dependency>
+		<!--java faker library for generating random data -->
+		<dependency>
+			<groupId>com.github.javafaker</groupId>
+			<artifactId>javafaker</artifactId>
+			<version>1.0.2</version>
+		</dependency>
 
 	</dependencies>
 	<build>
