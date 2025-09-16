@@ -15,7 +15,7 @@ import io.qameta.allure.Step;
 
 public class RegisterationTest extends LoginBase {
 	/**
-	 * @author gyaneshkamal This class is used to perform registration of new
+	 * @author gyanesh kamal This class is used to perform registration of new
 	 *         patient Used faker library to generate test data DataProvider is used
 	 *         to provide test data Allure annotations are used to generate allure
 	 *         report Assert is used to verify the title of the page after

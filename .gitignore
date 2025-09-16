@@ -1,3 +1,8 @@
+# Ignore screenshots
+*.png
+*.jpg
+/snap/
+
 allure-results/
 screenshots/
 screenshot/
