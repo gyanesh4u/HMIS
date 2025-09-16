@@ -209,11 +209,10 @@ public class ElementUtil {
 	}
 
 	public void selectFromSelect2(By locator, String value) {
-		driver.findElement(locator).click();
-		WebElement searchBox = driver.findElement(locator);
-		//searchBox.clear();
-		searchBox.sendKeys(value);
-		searchBox.sendKeys(Keys.ENTER);
+
+		waitForElementsVisible(locator, 10);
+		doSendKeysWithPause(locator, value, 10);
+		getElement(locator).sendKeys(Keys.ENTER);
 	}
 
 	public int getDropDownOptionsCount(By locator) {
