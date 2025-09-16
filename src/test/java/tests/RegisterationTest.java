@@ -2,6 +2,7 @@ package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.github.javafaker.Faker;
@@ -12,7 +13,9 @@ import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Step;
+import listeners.TestAllureListener;
 
+@Listeners(TestAllureListener.class)
 public class RegisterationTest extends LoginBase {
 	/**
 	 * @author gyanesh kamal This class is used to perform registration of new
