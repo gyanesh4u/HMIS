@@ -35,6 +35,7 @@ public class RegisterationTest extends LoginBase {
 		System.out.println(title + " " + fname + " " + lname + " | " + gender + " | " + mobile + " | Age: " + years
 				+ " | DOB: " + month + "-" + day + " | Dept: " + department);
 		title = regPage.getRegistertionPageTitle();
+		System.out.println(title);
 		Assert.assertEquals(title, "Billing");
 
 	}
@@ -54,7 +55,7 @@ public class RegisterationTest extends LoginBase {
 			String age = String.valueOf(faker.number().numberBetween(18, 60)); // random age 18-60
 			String month = String.format("%02d", faker.number().numberBetween(1, 12)); // 01-12
 			String day = String.format("%02d", faker.number().numberBetween(1, 28)); // 01-28
-			String department = faker.options().option("OPD", "IPD", "Emergency");
+			String department = faker.options().option("OPD", "IPD", "Diagnostic", "Casualty");
 
 			data[i][0] = title;
 			data[i][1] = firstName;
