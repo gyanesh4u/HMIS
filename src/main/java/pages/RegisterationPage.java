@@ -22,6 +22,8 @@ public class RegisterationPage {
 	private final By selectDepartment = By
 			.xpath("//div[@id='s2id_department']//span[@class='select2-chosen'][normalize-space()='--Select--']");
 	private final By selectDepartmentOption = By.cssSelector("div[id='select2-drop'] input[type='text']");
+	private final By doctorOption = By.xpath("//div[@id='s2id_doctorName']//span[@class='select2-chosen']");
+	private final By selectDoctor = By.xpath("//div[@id='select2-drop']//input[@type='text']");
 	private final By saveBtn = By.xpath("//button[@id='savebuton']");
 
 	public RegisterationPage(WebDriver driver) {
@@ -34,7 +36,7 @@ public class RegisterationPage {
 	}
 
 	public void registerNewPatient(String title, String fname, String lname, String gender, String mobile, String years,
-			String month, String day, String department) {
+			String month, String day, String department, String doctor) {
 		eleUtil.waitForElementVisible(selectPrefix, 10);
 		eleUtil.doClick(selectPrefix);
 		eleUtil.waitForElementsVisible(selectTitle, 20);
@@ -50,6 +52,8 @@ public class RegisterationPage {
 		eleUtil.doSendKeys(d, day);
 		eleUtil.doClick(selectDepartment);
 		eleUtil.selectFromSelect2(selectDepartmentOption, department);
+		eleUtil.doClick(doctorOption);
+		eleUtil.selectFromSelect2(selectDoctor, doctor);
 		eleUtil.doClick(saveBtn);
 		eleUtil.dismissAlert(10);
 	}

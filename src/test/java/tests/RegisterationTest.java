@@ -32,11 +32,11 @@ public class RegisterationTest extends LoginBase {
 	@Step("register new patient test")
 	@Test(priority = 1, dataProvider = "getRegisterData")
 	public void registerNewPatientTest(String title, String fname, String lname, String gender, String mobile,
-			String years, String month, String day, String department) {
+			String years, String month, String day, String department, String doctor) {
 		dashBoardPage.goToRegistrationPage();
-		regPage.registerNewPatient(title, fname, lname, gender, mobile, years, month, day, department);
+		regPage.registerNewPatient(title, fname, lname, gender, mobile, years, month, day, department, doctor);
 		System.out.println(title + " " + fname + " " + lname + " | " + gender + " | " + mobile + " | Age: " + years
-				+ " | DOB: " + month + "-" + day + " | Dept: " + department);
+				+ " | DOB: " + month + "-" + day + " | Dept: " + department + " | Doctor: " + doctor);
 		title = regPage.getRegistertionPageTitle();
 		System.out.println(title);
 		Assert.assertEquals(title, "Billing");
@@ -47,18 +47,19 @@ public class RegisterationTest extends LoginBase {
 	public Object[][] getRegisterData() {
 		// return new Object[][] { { "Mr.", "Tom", "Jerry", "Male", "9876543210", "35",
 		// "05", "15", "OPD" } };
-		Object[][] data = new Object[1][9];
+		Object[][] data = new Object[1][10];
 
 		for (int i = 0; i < 1; i++) {
-			String title = faker.options().option("Mr.", "Ms.", "Mrs.");
+			String title = faker.options().option("Mr.", "Miss", "Mrs.");
 			String firstName = faker.name().firstName();
 			String lastName = faker.name().lastName();
-			String gender = faker.options().option("Male", "Female");
+			String gender = faker.options().option("Ma", "Fem");
 			String phone = faker.number().digits(10); // random 10-digit phone number
 			String age = String.valueOf(faker.number().numberBetween(18, 60)); // random age 18-60
 			String month = String.format("%02d", faker.number().numberBetween(1, 12)); // 01-12
 			String day = String.format("%02d", faker.number().numberBetween(1, 28)); // 01-28
-			String department = faker.options().option("OPD", "IPD", "Diagnostic", "Casualty");
+			String department = faker.options().option("OPD", "IPD");
+			String doctor = faker.options().option("Dr. Milind", "Dr. Avi");
 
 			data[i][0] = title;
 			data[i][1] = firstName;
@@ -69,6 +70,7 @@ public class RegisterationTest extends LoginBase {
 			data[i][6] = month;
 			data[i][7] = day;
 			data[i][8] = department;
+			data[i][9] = doctor;
 		}
 		return data;
 	}
